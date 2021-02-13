@@ -5,13 +5,28 @@
   "version": "1.0.0",
   "private": false,
   "scripts": {
+    "format": "prettier --write",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint . "
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "react-scripts prettier",
+      "eslint"
+    ],
+    "*.js": "eslint --cache --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test --silent"
+    }
   },
   "browserslist": {
     "production": [
@@ -30,14 +45,20 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/styles": "^4.10.0",
+    "axios": "^0.21.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
     "react-router": "^6.0.0-beta.0",
     "react-router-dom": "^6.0.0-beta.0",
-    "react-scripts": "^4.0.0"
+    "react-scripts": "^4.0.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
@@ -46,6 +67,12 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.8",
-    "lint-staged": "^10.2.11"
+    "husky": "^4.2.5",
+    "jest": "^24.9.0",
+    "jest-enzyme": "^7.1.2",
+    "jest-extended": "^0.11.5",
+    "jest-fetch-mock": "^3.0.3",
+    "lint-staged": "^10.2.11",
+    "prettier": "^1.19.1"
   }
 }
