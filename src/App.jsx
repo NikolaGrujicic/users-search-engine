@@ -1,7 +1,11 @@
 import React from 'react';
+import NavigationBar from './components/navigations/navBar';
+import './styles/_main.scss';
 
 const App = () => (
-  <>Hello World</>
+  <div>
+    <NavigationBar />
+  </div>
 );
 
 export default App;
