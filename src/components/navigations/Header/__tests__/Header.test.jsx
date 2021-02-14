@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Navigations from '../Navigations';
+import Header from '../Header';
 
-test('renders Navigations', () => {
+test('renders Header', () => {
   const wrapper = shallow(
-    <Navigations />,
+    <Header />,
   );
   expect(wrapper).toMatchSnapshot();
 });

@@ -1,6 +1,6 @@
 import React from 'react';
-import TopNav from './TopNav';
-import SideNav from './SideNav';
+import Header from './Header';
+import Sidebar from './Sidebar';
 import useStyles from '../../styles/muiStyles';
 
 const Navigations = () => {
@@ -8,8 +8,8 @@ const Navigations = () => {
 
   return (
     <div className={classes.root}>
-      <TopNav />
-      <SideNav />
+      <Header />
+      <Sidebar />
     </div>
   );
 };

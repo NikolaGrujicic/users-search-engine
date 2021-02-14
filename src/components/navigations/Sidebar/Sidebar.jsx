@@ -3,7 +3,7 @@ import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar } 
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import SettingsIcon from '@material-ui/icons/Settings';
 
-const SideNav = () => (
+const Sidebar = () => (
   <Drawer variant="permanent">
     <Toolbar />
     <div className="drawerContainer">
@@ -24,4 +24,4 @@ const SideNav = () => (
   </Drawer>
 );
 
-export default SideNav;
+export default Sidebar;
