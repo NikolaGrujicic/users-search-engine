@@ -1,10 +1,10 @@
 import React from 'react';
-import NavigationBar from './components/navigations/navBar';
+import Navigations from './components/Navigations';
 import './styles/_main.scss';
 
 const App = () => (
   <div>
-    <NavigationBar />
+    <Navigations />
   </div>
 );
 
