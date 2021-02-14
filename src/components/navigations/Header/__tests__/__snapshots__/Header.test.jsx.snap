@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Header 1`] = `
+<WithStyles(ForwardRef(AppBar))
+  className="makeStyles-appBar-2"
+  position="fixed"
+>
+  <WithStyles(ForwardRef(Toolbar))>
+    <WithStyles(ForwardRef(Typography))
+      noWrap={true}
+      variant="h6"
+    >
+      Clipped drawer
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Toolbar))>
+</WithStyles(ForwardRef(AppBar))>
+`;

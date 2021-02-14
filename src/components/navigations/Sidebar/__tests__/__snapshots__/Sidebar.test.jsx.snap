@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Sidebar 1`] = `
+<WithStyles(ForwardRef(Drawer))
+  variant="permanent"
+>
+  <WithStyles(ForwardRef(Toolbar)) />
+  <div
+    className="drawerContainer"
+  >
+    <WithStyles(ForwardRef(List))>
+      <WithStyles(ForwardRef(ListItem))
+        button={true}
+      >
+        <WithStyles(ForwardRef(ListItemIcon))>
+          <Memo(ForwardRef(PeopleAltIcon)) />
+        </WithStyles(ForwardRef(ListItemIcon))>
+        <WithStyles(ForwardRef(ListItemText))
+          className="customer-text"
+        >
+          Customers
+        </WithStyles(ForwardRef(ListItemText))>
+      </WithStyles(ForwardRef(ListItem))>
+    </WithStyles(ForwardRef(List))>
+    <WithStyles(ForwardRef(Divider)) />
+    <WithStyles(ForwardRef(List))>
+      <WithStyles(ForwardRef(ListItem))
+        button={true}
+      >
+        <WithStyles(ForwardRef(ListItemIcon))>
+          <Memo(ForwardRef(SettingsIcon)) />
+        </WithStyles(ForwardRef(ListItemIcon))>
+        <WithStyles(ForwardRef(ListItemText))>
+          Settings
+        </WithStyles(ForwardRef(ListItemText))>
+      </WithStyles(ForwardRef(ListItem))>
+    </WithStyles(ForwardRef(List))>
+  </div>
+</WithStyles(ForwardRef(Drawer))>
+`;
