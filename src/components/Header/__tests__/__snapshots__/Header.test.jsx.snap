@@ -76,6 +76,7 @@ exports[`renders Header 1`] = `
         </a>
       </li>
     </ul>
+    <SearchBar />
   </div>
 </nav>
 `;

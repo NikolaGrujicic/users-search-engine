@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Users 1`] = `
+exports[`renders Search Bar 1`] = `
 <ContextProvider
   value={
     Object {
@@ -32,6 +32,6 @@ exports[`renders Users 1`] = `
     }
   }
 >
-  <Users />
+  <SearchBar />
 </ContextProvider>
 `;

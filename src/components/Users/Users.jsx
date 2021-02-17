@@ -4,7 +4,7 @@ import { stackRandomUsersAction } from '../../redux/actions/userActions';
 import UsersDetailsModal from './UsersDetailsModal';
 import useInfiniteScroll from '../../libs/customHooks/useInfiniteScroll';
 
-const Customers = () => {
+const Users = () => {
   const page = useSelector(state => state.randomUsers.page);
   const users = useSelector(state => state.randomUsers.users);
   const fetch = useSelector(state => state.randomUsers.fetch);
@@ -47,6 +47,7 @@ const Customers = () => {
 
   return (
     <div>
+      <h2>Users</h2>
       <div id="users-container" className="container">
         <div>
           {!fetch && (
@@ -104,4 +105,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default Users;

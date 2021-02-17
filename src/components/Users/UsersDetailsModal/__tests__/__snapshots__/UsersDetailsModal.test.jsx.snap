@@ -41,7 +41,19 @@ exports[`renders Users Details Modal 1`] = `
         className="modal-body"
       >
         <p>
-          Email:
+          State:
+          <u />
+        </p>
+        <p>
+          City:
+          <u />
+        </p>
+        <p>
+          Street:
+          <u />
+        </p>
+        <p>
+          Postcode:
           <u />
         </p>
         <p>

@@ -4,10 +4,10 @@ import Users from './components/Users';
 import './styles/_main.scss';
 
 const App = () => (
-  <div>
+  <>
     <Header />
     <Users />
-  </div>
+  </>
 );
 
 export default App;
