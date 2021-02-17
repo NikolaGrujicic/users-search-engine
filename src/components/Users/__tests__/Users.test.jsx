@@ -11,7 +11,6 @@ const mockStore = configureStore(middlewares);
 
 const initialState = {
   randomUsers: {
-    page: 0,
     users: [],
     fetch: true,
     loading: false,

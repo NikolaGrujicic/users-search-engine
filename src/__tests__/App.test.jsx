@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import App from '../App';
-import '../__mocks__/intersectionObserverMock';
 
 const middlewares = [thunk];
 
@@ -12,7 +11,6 @@ const mockStore = configureStore(middlewares);
 
 const initialState = {
   randomUsers: {
-    page: 0,
     users: [],
     fetch: true,
     loading: false,

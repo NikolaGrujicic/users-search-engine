@@ -22,11 +22,9 @@ export const infiniteScrolling = data => ({
   scrolling: data,
 });
 
-export const incrementUsersPage = () => ({ type: actionTypes.INCREMENT_PAGE });
-
-export const stackRandomUsersAction = page => dispatch => {
+export const stackRandomUsersAction = () => dispatch => {
   dispatch(loadingUsers(true));
-  getRandomUsers(page)
+  getRandomUsers()
     .then(({ data }) => {
       dispatch(stackUsers(data));
       dispatch(loadingUsers(false));
@@ -37,9 +35,9 @@ export const stackRandomUsersAction = page => dispatch => {
     });
 };
 
-export const getRandomUsersAction = page => dispatch => {
+export const getRandomUsersAction = () => dispatch => {
   dispatch(loadingUsers(true));
-  getRandomUsers(page)
+  getRandomUsers()
     .then(({ data }) => {
       dispatch(fetchUsers(data));
       dispatch(loadingUsers(false));

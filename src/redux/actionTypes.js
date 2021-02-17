@@ -1,5 +1,3 @@
-export const INCREMENT_PAGE = 'INCREMENT_PAGE';
-
 export const STACK_USERS = 'STACK_USERS';
 
 export const FETCH_USERS = 'FETCH_USERS';
