@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SplitName from '../../libs/helpers/SplitName';
-import { fetchUsers, filterUsersByName } from '../../redux/actions/userActions';
+import { filterUsersByName, infiniteScrolling } from '../../redux/actions/userActions';
 
 function SearchBar() {
   const users = useSelector(state => state.randomUsers.users);
@@ -15,7 +15,7 @@ function SearchBar() {
   };
 
   const search = () => {
-    dispatch(fetchUsers(false));
+    dispatch(infiniteScrolling(false));
     const res = SplitName(fullName.value);
     const searchUserByFullName = users.filter(user => {
       return user.name.first === res.firstName && user.name.last === res.lastName;

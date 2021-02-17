@@ -1,10 +1,11 @@
-import { STACK_USERS, FETCH_USERS, FILTER_BY_NAME, INCREMENT_PAGE, LOADING } from '../actionTypes';
+import { STACK_USERS, FETCH_USERS, FILTER_BY_NAME, INCREMENT_PAGE, LOADING, INFINITE_SCROLL } from '../actionTypes';
 
 const initialState = {
   users: [],
   fetch: true,
   page: 0,
   loading: false,
+  scrolling: true,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -19,6 +20,8 @@ const userReducer = (state = initialState, action) => {
       return { ...state, page: state.page + 1 };
     case LOADING:
       return { ...state, loading: action.loading };
+    case INFINITE_SCROLL:
+      return { ...state, scrolling: action.scrolling };
     default:
       return state;
   }

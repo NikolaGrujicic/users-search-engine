@@ -1,14 +1,16 @@
+/* eslint-disable react/display-name */
+/* eslint-disable prefer-arrow-callback */
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { stackRandomUsersAction } from '../../redux/actions/userActions';
-import UsersDetailsModal from './UsersDetailsModal';
 import useInfiniteScroll from '../../libs/customHooks/useInfiniteScroll';
+import { getRandomUsersAction, stackRandomUsersAction } from '../../redux/actions/userActions';
+import UsersDetailsModal from './UsersDetailsModal';
 
-const Users = () => {
+const Users = React.memo(() => {
   const page = useSelector(state => state.randomUsers.page);
   const users = useSelector(state => state.randomUsers.users);
-  const fetch = useSelector(state => state.randomUsers.fetch);
   const loading = useSelector(state => state.randomUsers.loading);
+  const scrolling = useSelector(state => state.randomUsers.scrolling);
 
   const [street, setStreet] = useState();
   const [city, setCity] = useState();
@@ -22,10 +24,10 @@ const Users = () => {
   useEffect(() => {
     if (users.length === 0) {
       dispatch(
-        stackRandomUsersAction(page),
+        getRandomUsersAction(page),
       );
     }
-  }, []);
+  }, [page]);
 
   const bottomBoundaryRef = useRef(null);
 
@@ -43,14 +45,23 @@ const Users = () => {
     }
   };
 
-  useInfiniteScroll(bottomBoundaryRef, dispatch, page);
+  useEffect(() => {
+    if (page > 0) {
+      dispatch(
+        stackRandomUsersAction(page),
+      );
+    }
+  }, [page]);
+
+  useInfiniteScroll(bottomBoundaryRef, dispatch);
 
   return (
     <div>
       <h2>Users</h2>
+      {console.log(0)}
       <div id="users-container" className="container">
         <div>
-          {!fetch && (
+          {!scrolling && (
           <div className="alert alert-danger" role="alert">
             Infinity Scroll is off! #
 
@@ -92,7 +103,6 @@ const Users = () => {
         </button>
       </div>
       )}
-      <div id="page-bottom-boundary" ref={bottomBoundaryRef} />
       <UsersDetailsModal
         state={state}
         city={city}
@@ -101,8 +111,9 @@ const Users = () => {
         phone={phone}
         cell={cell}
       />
+      {scrolling && <div id="page-bottom-boundary" ref={bottomBoundaryRef} />}
     </div>
   );
-};
+});
 
 export default Users;

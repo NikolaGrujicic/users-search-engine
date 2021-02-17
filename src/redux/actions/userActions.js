@@ -17,6 +17,10 @@ export const loadingUsers = data => ({
   type: actionTypes.LOADING,
   loading: data,
 });
+export const infiniteScrolling = data => ({
+  type: actionTypes.INFINITE_SCROLL,
+  scrolling: data,
+});
 
 export const incrementUsersPage = () => ({ type: actionTypes.INCREMENT_PAGE });
 
