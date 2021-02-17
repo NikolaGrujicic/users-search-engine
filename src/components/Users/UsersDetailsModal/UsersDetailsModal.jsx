@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UsersDetailsModal = ({ email, phone, cell }) => (
+const UsersDetailsModal = ({ state, city, street, postcode, phone, cell }) => (
   <div className="modal fade" id="basicModal" tabIndex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div className="modal-dialog">
       <div className="modal-content">
@@ -12,8 +12,20 @@ const UsersDetailsModal = ({ email, phone, cell }) => (
         </div>
         <div className="modal-body">
           <p>
-            Email:
-            <u>{email}</u>
+            State:
+            <u>{state}</u>
+          </p>
+          <p>
+            City:
+            <u>{city}</u>
+          </p>
+          <p>
+            Street:
+            <u>{street}</u>
+          </p>
+          <p>
+            Postcode:
+            <u>{postcode}</u>
           </p>
           <p>
             Phone:
