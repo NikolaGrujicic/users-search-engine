@@ -2,9 +2,8 @@ import { STACK_USERS, FETCH_USERS, FILTER_BY_NAME, LOADING, INFINITE_SCROLL } fr
 
 const initialState = {
   users: [],
-  fetch: true,
   loading: false,
-  scrolling: true,
+  scrolling: false,
 };
 
 const userReducer = (state = initialState, action) => {

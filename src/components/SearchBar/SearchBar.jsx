@@ -15,7 +15,7 @@ function SearchBar() {
   };
 
   const search = () => {
-    dispatch(infiniteScrolling(false));
+    dispatch(infiniteScrolling(true));
     const res = SplitName(fullName.value);
     const searchUserByFullName = users.filter(user => {
       return user.name.first === res.firstName && user.name.last === res.lastName;
@@ -24,10 +24,10 @@ function SearchBar() {
     dispatch(filterUsersByName(usersFiltered));
   };
   return (
-    <form className="form-inline">
+    <div className="form-inline">
       <input className="form-control mr-sm-2" onChange={onChange} type="search" placeholder="Search" aria-label="Search" />
       <button className="btn btn-secondary my-2 my-sm-0" onClick={search} type="submit">Search</button>
-    </form>
+    </div>
   );
 }
 

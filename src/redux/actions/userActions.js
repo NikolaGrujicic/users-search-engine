@@ -30,7 +30,7 @@ export const stackRandomUsersAction = () => dispatch => {
       dispatch(loadingUsers(false));
     })
     .catch(error => {
-      dispatch(fetchUsers(false));
+      dispatch(loadingUsers(false));
       return error;
     });
 };
@@ -43,7 +43,7 @@ export const getRandomUsersAction = () => dispatch => {
       dispatch(loadingUsers(false));
     })
     .catch(error => {
-      dispatch(fetchUsers(false));
+      dispatch(loadingUsers(false));
       return error;
     });
 };

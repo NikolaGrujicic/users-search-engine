@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { getRandomUsersAction, stackRandomUsersAction } from '../../redux/actions/userActions';
+import { getRandomUsersAction, infiniteScrolling, stackRandomUsersAction } from '../../redux/actions/userActions';
 import UsersDetailsModal from './UsersDetailsModal';
 
 const Users = () => {
@@ -21,7 +21,7 @@ const Users = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (users.length === 0) {
+    if (scrolling) {
       dispatch(
         getRandomUsersAction(),
       );
@@ -30,8 +30,8 @@ const Users = () => {
 
   const searchUserById = id => users.find(user => user.id.value === id);
 
-  const userToModal = name => {
-    const user = searchUserById(name);
+  const userToModal = id => {
+    const user = searchUserById(id);
     if (user.location !== undefined) {
       setStreet(user.location.street.name);
       setCity(user.location.city);
@@ -42,15 +42,20 @@ const Users = () => {
     }
   };
 
+  const resetUsersList = () => {
+    dispatch(infiniteScrolling(false));
+    window.location.reload();
+  };
+
   return (
     <div>
       <div id="users-container" className="container">
         <div>
-          {!scrolling && (
+          {scrolling && (
           <div className="alert alert-danger" role="alert">
             Infinity Scroll is off! #
 
-            <button type="button" className="btn btn-outline-danger">
+            <button type="button" className="btn btn-outline-danger" onClick={() => resetUsersList()}>
               Reset Infinity Scroll
             </button>
 
