@@ -1,13 +1,12 @@
 /* eslint-disable react/display-name */
 /* eslint-disable prefer-arrow-callback */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import useInfiniteScroll from '../../libs/customHooks/useInfiniteScroll';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { getRandomUsersAction, stackRandomUsersAction } from '../../redux/actions/userActions';
 import UsersDetailsModal from './UsersDetailsModal';
 
-const Users = React.memo(() => {
-  const page = useSelector(state => state.randomUsers.page);
+const Users = () => {
   const users = useSelector(state => state.randomUsers.users);
   const loading = useSelector(state => state.randomUsers.loading);
   const scrolling = useSelector(state => state.randomUsers.scrolling);
@@ -24,12 +23,10 @@ const Users = React.memo(() => {
   useEffect(() => {
     if (users.length === 0) {
       dispatch(
-        getRandomUsersAction(page),
+        getRandomUsersAction(),
       );
     }
-  }, [page]);
-
-  const bottomBoundaryRef = useRef(null);
+  }, []);
 
   const searchUserById = id => users.find(user => user.id.value === id);
 
@@ -45,20 +42,8 @@ const Users = React.memo(() => {
     }
   };
 
-  useEffect(() => {
-    if (page > 0) {
-      dispatch(
-        stackRandomUsersAction(page),
-      );
-    }
-  }, [page]);
-
-  useInfiniteScroll(bottomBoundaryRef, dispatch);
-
   return (
     <div>
-      <h2>Users</h2>
-      {console.log(0)}
       <div id="users-container" className="container">
         <div>
           {!scrolling && (
@@ -73,26 +58,34 @@ const Users = React.memo(() => {
           )}
         </div>
         <div className="row">
-          {users.map((user, index) => (
+          <InfiniteScroll
+            dataLength={users.length}
+            next={() => dispatch(stackRandomUsersAction(2))}
+            // eslint-disable-next-line react/jsx-boolean-value
+            hasMore={true}
+            className="row"
+          >
+            {users.map((user, index) => (
             // eslint-disable-next-line react/no-array-index-key
-            <div key={index} className="card">
-              <div className="card-body ">
-                <img
-                  alt={user.name.first}
-                  data-src={user.picture.large}
-                  className="card-img-top"
-                  src={user.picture.large}
-                />
+              <div key={index} className="card">
+                <div className="card-body ">
+                  <img
+                    alt={user.name.first}
+                    data-src={user.picture.large}
+                    className="card-img-top"
+                    src={user.picture.large}
+                  />
+                </div>
+                <div className="card-footer">
+                  <p className="card-text text-center text-capitalize text-primary">{user.name.first}</p>
+                  <p className="card-text text-center text-capitalize text-primary">{user.name.last}</p>
+                  <p className="card-text text-center text-capitalize text-primary">{user.email}</p>
+                  <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#basicModal" onClick={() => userToModal(user.id.value)}>Details</button>
+                </div>
+                <br />
               </div>
-              <div className="card-footer">
-                <p className="card-text text-center text-capitalize text-primary">{user.name.first}</p>
-                <p className="card-text text-center text-capitalize text-primary">{user.name.last}</p>
-                <p className="card-text text-center text-capitalize text-primary">{user.email}</p>
-                <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#basicModal" onClick={() => userToModal(user.id.value)}>Details</button>
-              </div>
-              <br />
-            </div>
-          ))}
+            ))}
+          </InfiniteScroll>
         </div>
       </div>
       {loading && (
@@ -111,9 +104,8 @@ const Users = React.memo(() => {
         phone={phone}
         cell={cell}
       />
-      {scrolling && <div id="page-bottom-boundary" ref={bottomBoundaryRef} />}
     </div>
   );
-});
+};
 
 export default Users;
