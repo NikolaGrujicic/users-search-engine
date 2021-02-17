@@ -1,5 +1,3 @@
-/* eslint-disable react/display-name */
-/* eslint-disable prefer-arrow-callback */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -21,7 +19,7 @@ const Users = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (scrolling) {
+    if (users.length === 0) {
       dispatch(
         getRandomUsersAction(),
       );
