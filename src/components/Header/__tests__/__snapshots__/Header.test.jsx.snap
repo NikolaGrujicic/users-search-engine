@@ -33,23 +33,9 @@ exports[`renders Header 1`] = `
       <li
         className="nav-item active"
       >
-        <a
+        <Link
           className="nav-link"
-          href="/"
-        >
-          Home
-          <span
-            className="sr-only"
-          >
-            (current)
-          </span>
-        </a>
-      </li>
-      <li
-        className="nav-item active"
-      >
-        <a
-          className="nav-link"
+          replace={false}
           to="/users"
         >
           Users
@@ -58,13 +44,14 @@ exports[`renders Header 1`] = `
           >
             (current)
           </span>
-        </a>
+        </Link>
       </li>
       <li
         className="nav-item active"
       >
-        <a
+        <Link
           className="nav-link"
+          replace={false}
           to="/settings"
         >
           Settings
@@ -73,7 +60,7 @@ exports[`renders Header 1`] = `
           >
             (current)
           </span>
-        </a>
+        </Link>
       </li>
     </ul>
     <SearchBar />
