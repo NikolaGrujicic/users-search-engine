@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Users 1`] = `
+<div>
+  <div
+    className="container"
+    id="users-container"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="card"
+      >
+        <div
+          className="card-body "
+        >
+          <div
+            className="card-footer"
+          >
+            <p
+              className="card-text text-center text-capitalize text-primary"
+            >
+              Nikola
+            </p>
+            <p
+              className="card-text text-center text-capitalize text-primary"
+            >
+              Grujicic
+            </p>
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+  </div>
+  <UsersDetailsModal />
+</div>
+`;
