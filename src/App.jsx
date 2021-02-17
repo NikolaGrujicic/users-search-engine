@@ -1,10 +1,10 @@
 import React from 'react';
-import Navigations from './components/Navigations';
+import Header from './components/Header';
 import './styles/_main.scss';
 
 const App = () => (
   <div>
-    <Navigations />
+    <Header />
   </div>
 );
 
