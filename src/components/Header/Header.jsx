@@ -1,6 +1,7 @@
 import React from 'react';
+import SearchBar from '../SearchBar/SearchBar';
 
-const TopNav = () => (
+const Header = () => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <a className="navbar-brand" href="/">Users Search Engine</a>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,8 +29,9 @@ const TopNav = () => (
           </a>
         </li>
       </ul>
+      <SearchBar />
     </div>
   </nav>
 );
 
-export default TopNav;
+export default Header;
