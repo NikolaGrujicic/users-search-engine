@@ -7,4 +7,11 @@ export const getRandomUsers = async () => {
   return response;
 };
 
+export const getRandomUsersByNationality = async (gb, es, ch, fr) => {
+  const response = await randomUsersClient.get(
+    `/?results=50&inc=picture,name,nat,login,location,phone,cell,email,id&nat=${gb},${es},${ch},${fr}`,
+  );
+  return response;
+};
+
 export default randomUsersClient;

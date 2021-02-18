@@ -1,5 +1,5 @@
 import * as actionTypes from '../actionTypes';
-import { getRandomUsers } from '../../libs/client/RandomUsersClient';
+import { getRandomUsers, getRandomUsersByNationality } from '../../libs/client/RandomUsersClient';
 
 export const fetchUsers = data => ({
   type: actionTypes.FETCH_USERS,
@@ -11,6 +11,10 @@ export const stackUsers = data => ({
 });
 export const filterUsersByName = data => ({
   type: actionTypes.FILTER_BY_NAME,
+  users: data,
+});
+export const filterUsersByNationality = data => ({
+  type: actionTypes.FILTER_BY_NATIONALITY,
   users: data,
 });
 export const loadingUsers = data => ({
@@ -40,6 +44,19 @@ export const getRandomUsersAction = () => dispatch => {
   getRandomUsers()
     .then(({ data }) => {
       dispatch(fetchUsers(data));
+      dispatch(loadingUsers(false));
+    })
+    .catch(error => {
+      dispatch(loadingUsers(false));
+      return error;
+    });
+};
+
+export const getRandomUsersByNationalityAction = (gb, es, ch, fr) => dispatch => {
+  dispatch(loadingUsers(true));
+  getRandomUsersByNationality(gb, es, ch, fr)
+    .then(({ data }) => {
+      dispatch(filterUsersByNationality(data));
       dispatch(loadingUsers(false));
     })
     .catch(error => {
