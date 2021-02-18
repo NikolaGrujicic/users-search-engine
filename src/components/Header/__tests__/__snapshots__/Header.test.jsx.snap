@@ -35,7 +35,6 @@ exports[`renders Header 1`] = `
       >
         <Link
           className="nav-link"
-          replace={false}
           to="/users"
         >
           Users
@@ -51,7 +50,6 @@ exports[`renders Header 1`] = `
       >
         <Link
           className="nav-link"
-          replace={false}
           to="/settings"
         >
           Settings
