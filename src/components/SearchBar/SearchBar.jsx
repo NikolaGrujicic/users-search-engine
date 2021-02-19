@@ -5,24 +5,30 @@ import SplitName from '../../libs/helpers/SplitName';
 import { filterUsersByName, infiniteScrolling } from '../../redux/actions/userActions';
 
 function SearchBar() {
-  const users = useSelector(state => state.randomUsers.users);
-
   const dispatch = useDispatch();
 
+  const users = useSelector(state => state.randomUsers.users);
+
   const [fullName, setFullName] = useState('');
+
   const onChange = e => {
-    setFullName({ value: e.target.value });
+    setFullName(e.target.value);
   };
 
   const search = () => {
     dispatch(infiniteScrolling(true));
-    const res = SplitName(fullName.value);
+
+    const res = SplitName(fullName);
+
     const searchUserByFullName = users.filter(user => {
-      return user.name.first === res.firstName && user.name.last === res.lastName;
+      return user.name.first.toLowerCase() === res.firstName.toLowerCase()
+      && user.name.last.toLowerCase() === res.lastName.toLowerCase();
     });
+
     const usersFiltered = searchUserByFullName;
     dispatch(filterUsersByName(usersFiltered));
   };
+
   return (
     <div className="form-inline">
       <input className="form-control mr-sm-2" onChange={onChange} type="search" placeholder="Search" aria-label="Search" />

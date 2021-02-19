@@ -63,13 +63,17 @@ const Users = () => {
         <div className="row">
           <InfiniteScroll
             dataLength={users.length}
-            next={() => dispatch(stackRandomUsersAction(2))}
-            // eslint-disable-next-line react/jsx-boolean-value
+            next={() => dispatch(stackRandomUsersAction())}
             hasMore={true}
             className="row"
+            pullDownToRefreshThreshold={50}
+            endMessage={(
+              <p style={{ textAlign: 'center' }}>
+                <b>Yay! You have seen it all</b>
+              </p>
+            )}
           >
             {users.map((user, index) => (
-            // eslint-disable-next-line react/no-array-index-key
               <div key={index} className="card">
                 <div className="card-body ">
                   <img
@@ -92,7 +96,7 @@ const Users = () => {
         </div>
       </div>
       {loading && (
-      <div className="text-center m-auto p-3">
+      <div className="text-center m-auto p-3 loading-container">
         <button className="btn btn-primary" type="button" disabled>
           <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
           <span className="visually-hidden">Loading...</span>

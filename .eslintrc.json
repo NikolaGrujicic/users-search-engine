@@ -28,7 +28,9 @@
       "react/prop-types": 1,
       "max-classes-per-file": ["error", 2],
       "object-curly-newline": ["error", { "multiline": true }],
-      "import/no-named-as-default": 0
+      "import/no-named-as-default": 0,
+      "react/no-array-index-key": "off",
+      "react/jsx-boolean-value": "off"
     }
   }
   
