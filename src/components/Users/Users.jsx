@@ -30,14 +30,13 @@ const Users = () => {
 
   const userToModal = id => {
     const user = searchUserById(id);
-    if (user.location !== undefined) {
-      setStreet(user.location.street.name);
-      setCity(user.location.city);
-      setState(user.location.state);
-      setPostcode(user.location.postcode);
-      setPhone(user.phone);
-      setCell(user.cell);
-    }
+
+    setStreet(user.location.street.name);
+    setCity(user.location.city);
+    setState(user.location.state);
+    setPostcode(user.location.postcode);
+    setPhone(user.phone);
+    setCell(user.cell);
   };
 
   const resetUsersList = () => {
