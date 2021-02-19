@@ -66,7 +66,6 @@ const Users = () => {
             next={() => dispatch(stackRandomUsersAction())}
             hasMore={true}
             className="row"
-            pullDownToRefreshThreshold={50}
             endMessage={(
               <p style={{ textAlign: 'center' }}>
                 <b>Yay! You have seen it all</b>
