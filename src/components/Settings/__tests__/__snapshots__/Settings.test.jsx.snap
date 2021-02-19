@@ -2,8 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="container"
-  id="settings"
+  className="container settings"
 >
   <div
     className="row"
