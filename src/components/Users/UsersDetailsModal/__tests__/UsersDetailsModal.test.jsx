@@ -1,45 +1,30 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import renderer from 'react-test-renderer';
+import initialState from '../../../../redux/stateMock/initialState';
+import { render, screen } from '../../../../test-utils';
 import UsersDetailsModal from '../UsersDetailsModal';
 
-test('renders Users Details Modal', () => {
-  const wrapper = shallow(
-    <UsersDetailsModal />,
-  );
-  expect(wrapper).toMatchSnapshot();
-});
-
-test('renders Users Details Modal with props', () => {
-  const wrapper = shallow(
-    <UsersDetailsModal
-      state="California"
-      city="Los Angeles"
-      postcode="123456"
-      street="Queens Boulevard"
-      phone="555-333"
-      cell="333-555"
-    />,
-  );
-
-  expect(wrapper).toMatchSnapshot();
+test('renders correctly', () => {
+  const tree = renderer
+    .create(<UsersDetailsModal />)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
 });
 
 test('check Users Details Modal props are correct', () => {
-  const wrapper = mount(
-    <UsersDetailsModal
-      state="California"
-      city="Los Angeles"
-      postcode="123456"
-      street="Queens Boulevard"
-      phone="555-333"
-      cell="333-555"
-    />,
-  );
+  render(<UsersDetailsModal
+    state="kilcoole"
+    city="waterford"
+    postcode="93027"
+    street="9278 new road"
+    phone="011-962-7516"
+    cell="081-454-0666"
+  />, { initialState });
 
-  expect((wrapper).prop('state')).toEqual('California');
-  expect((wrapper).prop('city')).toEqual('Los Angeles');
-  expect((wrapper).prop('postcode')).toEqual('123456');
-  expect((wrapper).prop('street')).toEqual('Queens Boulevard');
-  expect((wrapper).prop('phone')).toEqual('555-333');
-  expect((wrapper).prop('cell')).toEqual('333-555');
+  expect(screen.queryByText(/9278 new road/i)).toBeInTheDocument();
+  expect(screen.queryByText(/kilcoole/i)).toBeInTheDocument();
+  expect(screen.queryByText(/waterford/i)).toBeInTheDocument();
+  expect(screen.queryByText(/93027/i)).toBeInTheDocument();
+  expect(screen.queryByText(/011-962-7516/i)).toBeInTheDocument();
+  expect(screen.queryByText(/081-454-0666/i)).toBeInTheDocument();
 });

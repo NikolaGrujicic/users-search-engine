@@ -1,29 +1,27 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import configureStore from 'redux-mock-store';
+import renderer from 'react-test-renderer';
+import initialState from '../../../redux/stateMock/initialState';
+import { render, screen } from '../../../test-utils';
 import Settings from '../Settings';
 
-const middlewares = [thunk];
-
-const mockStore = configureStore(middlewares);
-
-const initialState = {
-  randomUsers: {
-    users: [],
-    loading: false,
-    scrolling: false,
-  },
-};
-
-let store;
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: jest.fn(),
+  useDispatch: jest.fn(),
+}));
+test('renders correctly', () => {
+  const tree = renderer
+    .create(<Settings />)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});
 test('renders Settings', () => {
-  store = mockStore(initialState);
-  const wrapper = shallow(
-    <Provider store={store}>
-      <Settings />
-    </Provider>,
-  );
-  expect(wrapper).toMatchSnapshot();
+  render(<Settings />, { initialState });
+
+  expect(screen.getByText(/Filter users by nationality:/i)).toBeInTheDocument();
+  expect(screen.getByText(/All Nationalities/i)).toBeInTheDocument();
+  expect(screen.getByText(/United Kingdom/i)).toBeInTheDocument();
+  expect(screen.getByText(/Spain/i)).toBeInTheDocument();
+  expect(screen.getByText(/Switzerland/i)).toBeInTheDocument();
+  expect(screen.getByText(/France/i)).toBeInTheDocument();
 });

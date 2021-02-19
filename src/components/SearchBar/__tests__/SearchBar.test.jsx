@@ -1,30 +1,17 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import configureStore from 'redux-mock-store';
+import { fireEvent, render } from '../../../test-utils';
 import SearchBar from '../SearchBar';
 
-const middlewares = [thunk];
-
-const mockStore = configureStore(middlewares);
-
-const initialState = {
-  randomUsers: {
-    users: [],
-    loading: false,
-    scrolling: false,
-  },
+const setup = () => {
+  const utils = render(<SearchBar />);
+  const input = utils.getByLabelText('search-input');
+  return {
+    input,
+    ...utils,
+  };
 };
-
-let store;
-
-test('renders Search Bar', () => {
-  store = mockStore(initialState);
-  const wrapper = shallow(
-    <Provider store={store}>
-      <SearchBar />
-    </Provider>,
-  );
-  expect(wrapper).toMatchSnapshot();
+it('typing in search calls onChange', () => {
+  const { input } = setup();
+  fireEvent.change(input, { target: { value: 'qwerty' } });
+  expect(input.value).toBe('qwerty');
 });

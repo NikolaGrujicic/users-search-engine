@@ -1,37 +1,114 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Settings 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "subscription": Subscription {
-        "handleChangeWrapper": [Function],
-        "listeners": Object {
-          "notify": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "clearActions": [Function],
-          "dispatch": [Function],
-          "getActions": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-        },
-        "unsubscribe": null,
-      },
-    }
-  }
+exports[`renders correctly 1`] = `
+<div
+  className="container"
+  id="settings"
 >
-  <Settings />
-</ContextProvider>
+  <div
+    className="row"
+  >
+    <span
+      className="setting-heading"
+    >
+      Filter users by nationality:
+    </span>
+    <br />
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <div
+          className="input-group-text setting-checkbox-container"
+        >
+          All Nationalities
+          <input
+            aria-label="Checkbox for following text input"
+            checked={false}
+            className="setting-checkbox-input"
+            name="all"
+            onChange={[Function]}
+            type="checkbox"
+          />
+        </div>
+      </div>
+      <div
+        className="form-group"
+      >
+        <div
+          className="input-group-text setting-checkbox-container"
+        >
+          United Kingdom
+          <input
+            aria-label="Checkbox for following text input"
+            checked={false}
+            className="setting-checkbox-input"
+            name="gb"
+            onChange={[Function]}
+            type="checkbox"
+          />
+        </div>
+      </div>
+      <div
+        className="form-group"
+      >
+        <div
+          className="input-group-text setting-checkbox-container"
+        >
+          Spain
+          <input
+            aria-label="Checkbox for following text input"
+            checked={false}
+            className="setting-checkbox-input"
+            name="es"
+            onChange={[Function]}
+            type="checkbox"
+          />
+        </div>
+      </div>
+      <div
+        className="form-group"
+      >
+        <div
+          className="input-group-text setting-checkbox-container"
+        >
+          Switzerland
+          <input
+            aria-label="Checkbox for following text input"
+            checked={false}
+            className="setting-checkbox-input"
+            name="ch"
+            onChange={[Function]}
+            type="checkbox"
+          />
+        </div>
+      </div>
+      <div
+        className="form-group"
+      >
+        <div
+          className="input-group-text setting-checkbox-container"
+        >
+          France
+          <input
+            aria-label="Checkbox for following text input"
+            checked={false}
+            className="setting-checkbox-input"
+            name="fr"
+            onChange={[Function]}
+            type="checkbox"
+          />
+        </div>
+      </div>
+      <button
+        className="btn btn-primary"
+        type="submit"
+      >
+        Filter
+      </button>
+    </form>
+  </div>
+</div>
 `;
