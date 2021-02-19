@@ -37,7 +37,7 @@ const UsersDetailsModal = ({ state, city, street, postcode, phone, cell }) => (
           </p>
         </div>
         <div className="modal-footer">
-          <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" data-testid="btnClose" className="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

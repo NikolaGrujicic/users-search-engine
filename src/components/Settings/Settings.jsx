@@ -30,7 +30,7 @@ const Settings = () => {
     dispatch(getRandomUsersByNationalityAction(gb, es, ch, fr));
   };
   return (
-    <div id="settings" className="container">
+    <div className="container settings">
       <div className="row">
         <span className="setting-heading">Filter users by nationality:</span>
         <br />

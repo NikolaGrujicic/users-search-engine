@@ -1,4 +1,3 @@
-/* eslint-disable arrow-body-style */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SplitName from '../../libs/helpers/SplitName';
@@ -18,11 +17,11 @@ function SearchBar() {
   const search = () => {
     dispatch(infiniteScrolling(true));
 
-    const res = SplitName(fullName);
+    const result = SplitName(fullName);
 
     const searchUserByFullName = users.filter(user => {
-      return user.name.first.toLowerCase() === res.firstName.toLowerCase()
-      && user.name.last.toLowerCase() === res.lastName.toLowerCase();
+      return user.name.first.toLowerCase() === result.firstName.toLowerCase()
+      && user.name.last.toLowerCase() === result.lastName.toLowerCase();
     });
 
     const usersFiltered = searchUserByFullName;
@@ -31,7 +30,7 @@ function SearchBar() {
 
   return (
     <div className="form-inline">
-      <input className="form-control mr-sm-2" onChange={onChange} type="search" placeholder="Search" aria-label="Search" />
+      <input className="form-control mr-sm-2" onChange={onChange} type="search" placeholder="Search" aria-label="search-input" />
       <button className="btn btn-secondary my-2 my-sm-0" onClick={search} type="submit">Search</button>
     </div>
   );

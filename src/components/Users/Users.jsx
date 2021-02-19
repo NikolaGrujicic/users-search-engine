@@ -47,14 +47,13 @@ const Users = () => {
 
   return (
     <div>
-      <div id="users-container" className="container">
+      <div className="container users">
         <div>
           {scrolling && (
           <div className="alert alert-danger" role="alert">
-            Infinity Scroll is off! #
-
+            Infinity Scroll is off
             <button type="button" className="btn btn-outline-danger" onClick={() => resetUsersList()}>
-              Reset Infinity Scroll
+              Reset
             </button>
 
           </div>
@@ -85,6 +84,7 @@ const Users = () => {
                 <div className="card-footer">
                   <p className="card-text text-center text-capitalize text-primary">{user.name.first}</p>
                   <p className="card-text text-center text-capitalize text-primary">{user.name.last}</p>
+                  <p className="card-text text-center text-capitalize text-primary">{user.login.username}</p>
                   <p className="card-text text-center text-capitalize text-primary">{user.email}</p>
                   <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#basicModal" onClick={() => userToModal(user.id.value)}>Details</button>
                 </div>
